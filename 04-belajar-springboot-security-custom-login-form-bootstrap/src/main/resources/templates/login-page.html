@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Login Page</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			.error {
+				color: orangered;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Login</h2>
+		
+		<form th:action="@{/authentication}" method="post">
+			<!-- Check login error -->
+			<div th:if="${param.error}">
+				<i class="error">Upps!!! your username / password invalid</i>
+			</div>
+			
+			<p>Username: <input type="text" name="username" /></p> 
+			<p>Password: <input type="password" name="password" /></p> 
+			<input type="submit" value="Login" />
+		</form>
+	</body>
+</html>
