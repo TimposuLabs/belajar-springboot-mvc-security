@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Belajar Spring CRUD Security</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body>
+		<h2>TimposuLabs Company</h2>
+		<hr />
+		Welcome to our company homepage.
+		<hr>
+
+		<form th:action="@{/logout}" method="post">
+			<button type="submit">Logout</button>	
+		</form>
+	</body>
+</html>
