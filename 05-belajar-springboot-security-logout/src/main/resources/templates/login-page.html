@@ -44,6 +44,13 @@
 						</div>
 					</div>
 
+					<!-- Pesan Logout -->
+					<div th:if="${param.logout}">
+						<div class="alert alert-success py-2" role="alert">
+							<small>Anda telah berhasil logout.</small>
+						</div>
+					</div>
+
 					<!-- Input Email -->
 					<div class="form-floating mb-3">
 						<input type="text" class="form-control" id="floatingInput" name="username" placeholder="Username"
