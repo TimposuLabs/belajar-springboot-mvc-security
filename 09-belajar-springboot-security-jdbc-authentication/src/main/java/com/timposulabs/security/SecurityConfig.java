@@ -1,39 +1,21 @@
 package com.timposulabs.security;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
+import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfig {
 
-	// membuat user yang hanya running di memory
+	// membuat user konfigurasi dari database
 	@Bean
-	public InMemoryUserDetailsManager userDetailsManager() {
-		
-		UserDetails aco = User.builder()
-				.username("aco")
-				.password("{noop}test123")
-				.roles("GUEST")
-				.build();
-		
-		UserDetails ade = User.builder()
-				.username("ade")
-				.password("{noop}test123")
-				.roles("GUEST", "USERS")
-				.build();
-		
-		UserDetails ucup = User.builder()
-				.username("ucup")
-				.password("{noop}test123")
-				.roles("GUEST", "USERS", "ADMIN")
-				.build();				
-		
-		return new InMemoryUserDetailsManager(aco, ade, ucup);
+	public UserDetailsManager userDetailsManager(DataSource dataSource) {
+		return new JdbcUserDetailsManager(dataSource);		
 	}
 	
 	// konfig custom login page
