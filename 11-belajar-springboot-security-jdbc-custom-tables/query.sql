@@ -1,24 +1,24 @@
 USE `belajar_spring`;
 
-DROP TABLE IF EXISTS `authorities`;
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `roles`;
+DROP TABLE IF EXISTS `members`;
 
 --
--- Table structure for table `users`
+-- Table structure for table `members`
 --
 
-CREATE TABLE `users` (
-  `username` varchar(50) NOT NULL,
+CREATE TABLE `members` (
+  `user_id` varchar(50) NOT NULL,
   `password` char(68) NOT NULL,
-  `enabled` tinyint NOT NULL,
-  PRIMARY KEY (`username`)
+  `active` tinyint NOT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Inserting data for table `users`
+-- Inserting data for table `members`
 --
 
-INSERT INTO `users` 
+INSERT INTO `members` 
 VALUES 
 -- Password = test123 --
 ('aco','{bcrypt}$2a$12$J5TR1bl3yRrUJ5LHAezNH.r8Bs9zCOuTsop2PAmUxmUEP7j7V5Mke',1), 
@@ -27,21 +27,21 @@ VALUES
 
 
 --
--- Table structure for table `authorities`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE `authorities` (
-  `username` varchar(50) NOT NULL,
-  `authority` varchar(50) NOT NULL,
-  UNIQUE KEY `authorities_idx_1` (`username`,`authority`),
-  CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+CREATE TABLE `roles` (
+  `user_id` varchar(50) NOT NULL,
+  `role` varchar(50) NOT NULL,
+  UNIQUE KEY `authorities5_idx_1` (`user_id`,`role`),
+  CONSTRAINT `authorities5_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `members` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Inserting data for table `authorities`
+-- Inserting data for table `roles`
 --
 
-INSERT INTO `authorities` 
+INSERT INTO `roles` 
 VALUES 
 ('aco','ROLE_GUEST'),
 ('ade','ROLE_GUEST'),

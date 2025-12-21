@@ -15,7 +15,17 @@ public class SecurityConfig {
 	// membuat user konfigurasi dari database
 	@Bean
 	public UserDetailsManager userDetailsManager(DataSource dataSource) {
-		return new JdbcUserDetailsManager(dataSource);		
+		JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
+		
+		// set query untuk mendapatkan user berdasarkan username
+		jdbcUserDetailsManager.setUsersByUsernameQuery(
+				"SELECT user_id, password, active FROM members WHERE user_id=?");
+		
+		// set query untuk mendapatkan role berdasarkan username
+		jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
+				"SELECT user_id, role FROM roles WHERE user_id=?");
+		
+		return jdbcUserDetailsManager;		
 	}
 	
 	// konfig custom login page
