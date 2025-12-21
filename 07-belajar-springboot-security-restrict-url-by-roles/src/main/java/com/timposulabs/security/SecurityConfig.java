@@ -42,6 +42,9 @@ public class SecurityConfig {
 		
 		httpSecurity.authorizeHttpRequests(configurer -> 
 					configurer
+						.requestMatchers("/").hasRole("GUEST")
+						.requestMatchers("/user/**").hasAnyRole("USERS", "ADMIN")
+						.requestMatchers("/admin/**").hasRole("ADMIN")
 						.anyRequest().authenticated()
 				).formLogin(form ->
 					form
