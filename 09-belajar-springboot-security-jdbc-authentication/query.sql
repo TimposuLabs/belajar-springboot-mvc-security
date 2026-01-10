@@ -44,7 +44,7 @@ INSERT INTO `authorities`
 VALUES 
 ('aco','ROLE_GUEST'),
 ('ade','ROLE_GUEST'),
-('ade','ROLE_USER'),
+('ade','ROLE_USERS'),
 ('ucup','ROLE_GUEST'),
-('ucup','ROLE_USER'),
+('ucup','ROLE_USERS'),
 ('ucup','ROLE_ADMIN');

@@ -5,6 +5,8 @@ import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -19,13 +21,20 @@ public class SecurityConfig {
 		
 		// set query untuk mendapatkan user berdasarkan username
 		jdbcUserDetailsManager.setUsersByUsernameQuery(
-				"SELECT user_id, password, active FROM members WHERE user_id=?");
+				"SELECT user_id, user_password, active FROM accounts WHERE user_id=?");
 		
 		// set query untuk mendapatkan role berdasarkan username
 		jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
-				"SELECT user_id, role FROM roles WHERE user_id=?");
+				"SELECT user_id, user_role FROM roles WHERE user_id=?");
 		
 		return jdbcUserDetailsManager;		
+	}
+	
+	// Bean untuk Password Encoder BCrypt
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+	    // Angka 12 adalah 'High security' (log rounds) cocok production. Standar adalah 10-12.
+	    return new BCryptPasswordEncoder(12);
 	}
 	
 	// konfig custom login page
