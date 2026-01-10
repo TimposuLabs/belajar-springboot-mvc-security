@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.timposulabs</groupId>
-	<artifactId>10-belajar-springboot-security-jdbc-authentication-bycrypt-encryption</artifactId>
+	<artifactId>10-belajar-springboot-security-jdbc-authentication-bcrypt-encryption</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>10-belajar-springboot-security-jdbc-authentication-bycript-encription</name>
+	<name>10-belajar-springboot-security-jdbc-authentication-bcrypt-encription</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
