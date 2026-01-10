@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.timposulabs</groupId>
-	<artifactId>11-belajar-springboot-security-jdbc-custom-tables</artifactId>
+	<artifactId>12-belajar-springboot-security-jdbc-custom-tables</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>11-belajar-springboot-security-jdbc-custom-tables</name>
+	<name>12-belajar-springboot-security-jdbc-custom-tables</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
